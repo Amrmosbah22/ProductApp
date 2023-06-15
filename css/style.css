@@ -95,13 +95,18 @@ ul{
 .header .inputs{
     margin: 20px 0;
 }
+.header .inputs .price{
+    display: flex;
+}
 .header .inputs .price input{
-    width: 20%;
+    margin: 5px 10px 5px 0;
 }
 #total{
     background-color: #000;
-    padding: 7px 5px;
     border-radius: 2px;
+    display: flex;
+    align-items: center;
+    padding: 0 3px;
 }
 #total::before{
     content: "Total";
