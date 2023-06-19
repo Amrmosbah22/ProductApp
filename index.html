@@ -22,10 +22,10 @@
                 <div class="outputs">
                     <div class="search">
                         <div class="btnSearch">
-                            <button id="searchTitle">Search By Title</button>
-                            <button id="searchCategory">Search By Category</button>
+                            <button onclick="getSearchMode(this.id)" id="searchTitle">Search By Title</button>
+                            <button onclick="getSearchMode(this.id)" id="searchCategory">Search By Category</button>
                         </div>
-                        <input type="text" id="search" placeholder="search" itemid="search">
+                        <input onkeyup="searchData(this.value)" type="text" id="search" placeholder="search" itemid="search">
                         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>

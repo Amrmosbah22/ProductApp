@@ -32,31 +32,33 @@ if(localStorage.product != null){
 
 submit.onclick = function(){
     let newPro = {
-        title:title.value,
+        title:title.value.toLowerCase(),
         price:price.value,
         taxes:taxes.value,
         ads:ads.value,
         discount:discount.value,
         total:total.innerHTML,
         count:count.value,
-        category:category.value
+        category:category.value.toLowerCase()
     }
-    if(mood === 'create'){
-        if(newPro.count > 1){
-            for(let i = 0; i < newPro.count ; i++){
+    if(title.value != '' && price.value != '' && category.value != '' && newPro.count < 501 ){
+        if(mood === 'create'){
+            if(newPro.count > 1){
+                for(let i = 0; i < newPro.count ; i++){
+                    dataPro.push(newPro);
+                }
+            }else{
                 dataPro.push(newPro);
             }
         }else{
-            dataPro.push(newPro);
+            dataPro[tmp]= newPro;
+            mood = 'create';
+            submit.innerHTML = "Create";
+            count.style.display = "block"; 
         }
-    }else{
-        dataPro[tmp]= newPro;
-        mood = 'create';
-        submit.innerHTML = "create";
-        count.style.display = "block"; 
+        clearData()
     }
     localStorage.setItem("product", JSON.stringify(dataPro))
-    clearData()
     showData()
 }
 // clear 
@@ -76,7 +78,7 @@ function showData(){
     for(let i= 0; i < dataPro.length; i++){
         table += `
         <tr>
-            <td>${i}</td>
+            <td>${i+1}</td>
             <td>${dataPro[i].title}</td>
             <td>${dataPro[i].price}</td>
             <td>${dataPro[i].taxes}</td>
@@ -94,7 +96,7 @@ function showData(){
     let btnDelete = document.getElementById('deleteAll');
     if(dataPro.length > 0){
         btnDelete.innerHTML = `
-            <h2 onClick=(deleteAll())>(${dataPro.length}) <span>
+            <h2>(${dataPro.length})<span>
             <button onClick=(deleteAll())> delete all</button></span> </h2> 
         `
     }else{
@@ -134,3 +136,63 @@ function updateData(i){
     })
 }
 // search
+let searchMode = "title";
+
+function getSearchMode(id){
+    let search = document.getElementById('search');
+    if(id == "searchTitle"){
+        searchMode = ' Title';
+    }else{
+        searchMode = ' Category';
+    }
+    search.placeholder = 'Search By' + searchMode;
+    search.focus()
+    search.value = '';
+    showData()
+} 
+
+function searchData(value){
+    let table = '';
+    if(searchMode == 'title'){  
+        for(let i=  0; i < dataPro.length; i++){
+            if(dataPro[i].title.includes(value.toLowerCase())){
+                table += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>${dataPro[i+1].title}</td>
+                        <td>${dataPro[i].price}</td>
+                        <td>${dataPro[i].taxes}</td>
+                        <td>${dataPro[i].ads}</td>
+                        <td>${dataPro[i].discount}</td>
+                        <td>${dataPro[i].total}</td>
+                        <td>${dataPro[i].category}</td>
+                        <td><button onClick="updateData(${i})" class="update">Update</button></td>
+                        <td><button onClick="deleteData(${i})" class="delete">delete</button></td>
+                    </tr>
+                `
+            }
+        }
+    }else{
+        for(let i=  0; i < dataPro.length; i++){
+            if(dataPro[i].category.includes(value.toLowerCase())){
+                table += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>${dataPro[i+1].title}</td>
+                        <td>${dataPro[i].price}</td>
+                        <td>${dataPro[i].taxes}</td>
+                        <td>${dataPro[i].ads}</td>
+                        <td>${dataPro[i].discount}</td>
+                        <td>${dataPro[i].total}</td>
+                        <td>${dataPro[i].category}</td>
+                        <td><button onClick="updateData(${i})" class="update">Update</button></td>
+                        <td><button onClick="deleteData(${i})" class="delete">delete</button></td>
+                    </tr>
+                `
+            }
+        }
+    }
+    
+    document.getElementById('tbody').innerHTML = table;
+}
+// finish

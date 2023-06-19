@@ -43,7 +43,6 @@ ul{
 /* Start Header */
 .header{
     text-align: center;
-    text-transform: uppercase;
 }
 .header .head{
     display: flex;
@@ -92,24 +91,24 @@ ul{
 .header .btnSearch button:hover{
     background-color: #000000;
 }
-.header .inputs{
-    margin: 20px 0;
-}
 .header .inputs .price{
     display: flex;
+    align-items: center;
 }
 .header .inputs .price input{
     margin: 5px 10px 5px 0;
+    width: 20%;
 }
 #total{
     background-color: #000;
-    border-radius: 2px;
+    border-radius: 3px;
     display: flex;
     align-items: center;
+    height: 35px;
     padding: 0 3px;
 }
 #total::before{
-    content: "Total";
+    content: "Total:";
 }
 .header input{
     width: 100%;
@@ -165,6 +164,9 @@ ul{
 }
 .header table th, td{
     padding: 5px;
+}
+.table th{
+    text-transform: uppercase;
 }
 .table .delete ,.table .update{
     border: 0;
