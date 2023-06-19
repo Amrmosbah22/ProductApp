@@ -145,14 +145,17 @@ ul{
 }
 .header .inputs .btn button:hover{
     opacity: .6;
-    letter-spacing: 1px;
 }
 .header .inputs .btn .deleteAll button{
+    font-size: 17px;
+    margin-left: 10px;
     background-color: rgb(247, 95, 95);
+}
+.header .inputs .btn .deleteAll h2{
+    font-size: 20px;
 }
 .header .inputs .btn .deleteAll button:hover{
     opacity: .6;
-    letter-spacing: 1px;
     background-color: red;
 }
 .header table{
