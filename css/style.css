@@ -127,7 +127,12 @@ ul{
     background-color: #000;
     transform: scale(1.1);
 }
-.header .inputs > button{
+.header .inputs .btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header .inputs .btn button{
     margin: 15px 0;
     width: 90px;
     height: 40px;
@@ -138,9 +143,17 @@ ul{
     color: #fff;
     background-color: #0bdb38;
 }
-.header .inputs > button:hover{
+.header .inputs .btn button:hover{
     opacity: .6;
     letter-spacing: 1px;
+}
+.header .inputs .btn .deleteAll button{
+    background-color: rgb(247, 95, 95);
+}
+.header .inputs .btn .deleteAll button:hover{
+    opacity: .6;
+    letter-spacing: 1px;
+    background-color: red;
 }
 .header table{
     width: 100%;

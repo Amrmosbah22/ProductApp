@@ -69,11 +69,31 @@ function showData(){
             <td>${dataPro[i].total}</td>
             <td>${dataPro[i].category}</td>
             <td><button class="update">Update</button></td>
-            <td><button class="delete">delete</button></td>
+            <td><button onClick="deleteData(${i})" class="delete">delete</button></td>
         </tr>
         `
     }
-    document.getElementById('tbody').innerHTML = table ;
+    document.getElementById('tbody').innerHTML = table;
+    let btnDelete = document.getElementById('deleteAll');
+    if(dataPro.length > 0){
+        btnDelete.innerHTML = `
+            <button onClick=(deleteAll())> delete all </button>
+        `
+    }else{
+        btnDelete.innerHTML = '';
+    }
 }
 showData()
+// delete
+function deleteData(i){
+    dataPro.splice(i,1);
+    localStorage.product = JSON.stringify(dataPro);
+    showData()
+}
+// delete all
+function deleteAll(){
+    localStorage.clear()
+    dataPro.splice(0)
+    showData()
+}
 // 
