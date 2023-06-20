@@ -159,7 +159,7 @@ function searchData(value){
                 table += `
                     <tr>
                         <td>${i}</td>
-                        <td>${dataPro[i+1].title}</td>
+                        <td>${dataPro[i].title}</td>
                         <td>${dataPro[i].price}</td>
                         <td>${dataPro[i].taxes}</td>
                         <td>${dataPro[i].ads}</td>
@@ -178,7 +178,7 @@ function searchData(value){
                 table += `
                     <tr>
                         <td>${i}</td>
-                        <td>${dataPro[i+1].title}</td>
+                        <td>${dataPro[i].title}</td>
                         <td>${dataPro[i].price}</td>
                         <td>${dataPro[i].taxes}</td>
                         <td>${dataPro[i].ads}</td>
